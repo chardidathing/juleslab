@@ -1,4 +1,8 @@
-# Created by https://www.toptal.com/developers/gitignore/api/windows,linux,macos,visualstudiocode,sublimetext,ansible
+# Don't commit local variables.
+vars/default.yaml
+vars/secrets.yaml
+
+### Start of gitignore.io template ###
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,linux,macos,visualstudiocode,sublimetext,ansible
 
 ### Ansible ###
@@ -130,4 +134,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/windows,linux,macos,visualstudiocode,sublimetext,ansible
+### End of gitignore.io template ###
