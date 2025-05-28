@@ -1,0 +1,26 @@
+---
+- name: Configure Jellyseerr
+  hosts: services
+  become: true
+  tasks:
+    - name: Create Jellyseerr config directory
+      ansible.builtin.file:
+        path: "/opt/jellyseerr/config"
+        state: directory
+        mode: '0755'
+
+    - name: Deploy Jellyseerr
+      community.docker.docker_container:
+        name: jellyseerr
+        image: fallenbagel/jellyseerr:latest
+        state: started
+        restart_policy: unless-stopped
+        restart: true
+        networks:
+          - name: caddy_net
+        ports:
+          - "5055:5055"
+        volumes:
+          - /opt/jellyseerr/config:/app/config
+        env:
+          TZ: "{{ timezone }}"

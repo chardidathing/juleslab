@@ -16,3 +16,22 @@
     # Default response
     respond "Juleslab Online - Welcome to the rabbithole."
 }
+
+### Example Service
+#example.{{ caddy_domain }} {
+#    tls {
+#        dns cloudflare {{ cloudflare_api_token }}
+#        resolvers 1.1.1.1
+#    }
+#
+#    # Enable compression - Uncomment line below to enable
+#    # encode zstd gzip
+#
+#    # Replace <service> and <service_port> with your container name and port
+#    reverse_proxy <service>:<service_port> {
+#        header_up X-Forwarded-Proto https
+#        header_up X-Real-IP {remote_host}
+#        header_up X-Forwarded-For {remote_host}
+#    }
+#}
+
