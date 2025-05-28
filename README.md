@@ -3,4 +3,11 @@
 
 ## Setup
 
+### General Configuration
+[docs/general.md](docs/general.md)
+
+### Domain Setup (Caddy w/Cloudflare)
 [docs/domain.md](docs/domain.md)
+
+### Running time :3
+[docs/running.md](docs/running.md)
