@@ -7,10 +7,18 @@
 
 > Linux: Install `ansible` and `ansible-lint` via your package manager.
 
-### Configuring Box
+### Installation Reccomendations
 > Debian (Headless) and Ubuntu Server are the only supported OS's.
-1. Ensure your box has a static local IPv4 Address. If it changes, glhf.
-2. 
+- Skip the root password setup, it will create a user with sudo privileges.
+- Install Debian with *only* `SSH Server` and `Standard system`
+
+### Configuring Box
+- Ensure your box has a static local IPv4 Address. If it changes, glhf.
+- Setup your SSH public key in ~/.ssh/authorized_keys
+    - You can also import pubkeys from github with `ssh-import-id-gh <username>` - Install `ssh-import-id` for this.
+
+### Set username in `inventory`
+- Change `ansible_user` from `notcharlie` to your username.
 
 ### Set box IP in `inventory`
 - Change `69.69.69.69` to the local IPv4 IP.
