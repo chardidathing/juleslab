@@ -1,7 +1,6 @@
 ---
 box:
   vars:
-    ansible_user: "user"
     security_ssh_port: 22
     security_ssh_password_authentication: "no"
     security_ssh_permit_root_login: "yes"
