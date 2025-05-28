@@ -1,6 +1,7 @@
 # Don't commit local variables.
 vars/default.yaml
 vars/secrets.yaml
+.ansible/
 
 ### Start of gitignore.io template ###
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,linux,macos,visualstudiocode,sublimetext,ansible
