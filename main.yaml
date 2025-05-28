@@ -1,0 +1,17 @@
+---
+- name: Configure Juleslab
+  hosts: box
+  tasks:
+    - name: Import all variables from vars/default.yaml
+      ansible.builtin.include_vars: vars/default.yaml
+    - name: Import secrets from vars/secrets.yaml
+      ansible.builtin.include_vars: vars/secrets.yaml
+
+- name: Update APT cache and Upgrade all packages
+  ansible.builtin.import_playbook: playbooks/update.yaml
+- name: Harden SSH
+  ansible.builtin.import_playbook: playbooks/secure.yaml
+- name: Configure Docker
+  ansible.builtin.import_playbook: playbooks/docker.yaml
+- name: Configure Caddy
+  ansible.builtin.import_playbook: playbooks/caddy.yaml

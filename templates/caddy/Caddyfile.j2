@@ -1,0 +1,18 @@
+{
+    email {{ cloudflare_email }}
+    # Global options
+    auto_https disable_redirects # Prevents double-redirect with Cloudflare
+}
+
+{{ caddy_domain }}, {{ caddy_wildcard_domain }} {
+    tls {
+        dns cloudflare {{ cloudflare_api_token }}
+        resolvers 1.1.1.1
+    }
+    
+    # Enable compression
+    encode zstd gzip
+
+    # Default response
+    respond "Juleslab Online - Welcome to the rabbithole."
+}

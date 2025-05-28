@@ -1,0 +1,11 @@
+---
+timezone: Australia/Adelaide # Set TZ Identifier (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
+# watchtower: 0 1 * * * # Cron formatting - for later.
+
+# Caddy configuration
+caddy_domain: "subdomain.domain.tld"
+caddy_wildcard_domain: "*.subdomain.domain.tld"
+caddy_container_name: "caddy"
+caddy_config_dir: "/opt/caddy/config"
+caddy_data_dir: "/opt/caddy/data"

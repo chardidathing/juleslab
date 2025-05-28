@@ -1,0 +1,51 @@
+---
+- name: Configure Caddy with Cloudflare DNS
+  hosts: box
+  become: true
+  tasks:
+    - name: Create Caddy directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      loop:
+        - "{{ caddy_config_dir }}"
+        - "{{ caddy_data_dir }}"
+
+    - name: Create Caddy configuration file
+      ansible.builtin.template:
+        src: ../templates/caddy/Caddyfile.j2
+        dest: "{{ caddy_config_dir }}/Caddyfile"
+        mode: '0644'
+
+    - name: Check if Docker network exists
+      community.docker.docker_network_info:
+        name: caddy_net
+      register: network_info
+      ignore_errors: true
+
+    - name: Create Docker network for Caddy
+      community.docker.docker_network:
+        name: caddy_net
+        state: present
+      when: network_info.failed or network_info.exists == false
+
+    - name: Create Caddy Docker container
+      community.docker.docker_container:
+        name: "{{ caddy_container_name }}"
+        image: ghcr.io/caddybuilds/caddy-cloudflare:latest
+        command: caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
+        state: started
+        restart: true
+        restart_policy: unless-stopped
+        env:
+          CLOUDFLARE_API_TOKEN: "{{ cloudflare_api_token }}"
+        volumes:
+          - "{{ caddy_config_dir }}/Caddyfile:/etc/caddy/Caddyfile:ro"
+          - "{{ caddy_data_dir }}:/data"
+        ports:
+          - "80:80"
+          - "443:443"
+          - "443:443/udp"  # For HTTP/3 support
+        networks:
+          - name: caddy_net
