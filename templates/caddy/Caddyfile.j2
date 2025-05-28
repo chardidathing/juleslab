@@ -27,11 +27,11 @@
 #    # Enable compression - Uncomment line below to enable
 #    # encode zstd gzip
 #
-#    # Replace <service> and <service_port> with your container name and port
+#    # Replace <service> and <service_port> with your container name and port on the same host.
+#    # If the service you want to proxy to is on another host, use the IP in place of service name.
 #    reverse_proxy <service>:<service_port> {
 #        header_up X-Forwarded-Proto https
 #        header_up X-Real-IP {remote_host}
 #        header_up X-Forwarded-For {remote_host}
 #    }
 #}
-
