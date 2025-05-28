@@ -20,7 +20,8 @@ box:
       - "22" # SSH
       - "80" # HTTP
       - "443" # HTTPS
-    # firewall_allowed_udp_ports:
+    firewall_allowed_udp_ports:
+      - "443" # HTTP/3 Support
     docker_edition: 'ce'
     docker_packages_state: present
     docker_packages:
