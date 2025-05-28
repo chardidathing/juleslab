@@ -1,11 +1,20 @@
 # General Configuration
 
 ### Setup Ansible
+- Install Ansible
 > Windows: sob?
 
 > macOS (Homebrew): `brew install ansible ansible-lint`
 
 > Linux: Install `ansible` and `ansible-lint` via your package manager.
+- Install `community.general`
+```
+ansible-galaxy collection install community.general
+```
+- Install roles
+```
+ansible-galaxy role install geerlingguy.security geerlingguy.firewall geerlingguy.docker geerlingguy.pip community.docker --ignore-errors
+```
 
 ### Installation Reccomendations
 > Debian (Headless) and Ubuntu Server are the only supported OS's.
