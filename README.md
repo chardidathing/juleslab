@@ -12,6 +12,9 @@
 ### Running time :3
 [docs/running.md](docs/running.md)
 
+### Adding Containers
+[docs/adding-containers.md](docs/adding-containers.md)
+
 ## ⚠️ Things to note
 - IPv6 will be disabled.
 - Firewall rules will be configured by this playbook. UFW will be disabled.
